@@ -1,0 +1,11 @@
+docker run -d --restart always -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock r1co/jenkins-docker
+chmod 777 /var/run/docker.sock
+
+5e05b535f9374f648f966ce6d0651595
+
+13.235.157.195  jenkins ip
+sudo usermod -aG docker jenkins
+docker exec -u 0 -it ci /bin/bash
+sudo reboot (ec2)
+ssh -i ~/Downloads/dockertraining.pem ubuntu@13.235.157.195
+chmod 777 /var/run/docker.sock
