@@ -1,0 +1,17 @@
+Q & A
+
+Why Docker?
+Why Docker Machine?
+What is Swarm?
+Docker is a virtualization technology similar to VMWare.  True  or False? 
+
+Verify Docker installation by running below command and expect no errors
+
+docker --version
+docker --help
+docker container --help
+
+Verify Docker Machine installation by running below command
+	docker-machine --version
+	docker-machine --help
+

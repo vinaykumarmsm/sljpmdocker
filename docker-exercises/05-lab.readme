@@ -1,0 +1,8 @@
+Create local registry server
+Create registry server and bind it docker volume
+Create registry server and bind it to volume pointing to host location
+Tag and push an image to registry server created in last step
+Stop & remove registry server and check if the image content are found in host mount
+Create Spring Boot Rest App (https://github.com/spring-guides/gs-rest-service)
+Build docker using Dockerized Jenkins and deploy docker image to local registry server
+

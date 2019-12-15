@@ -1,0 +1,7 @@
+Create lightweight linux container (use alpine image)
+Start the container created in above step
+Create nginx container & start it
+Check logs of nginx container
+Run mysql container in the background
+Run Spring boot app by linking to mysql docker container
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: www
+  labels:
+    app: www-tutum
+spec:
+  containers:
+  - name: hello-world
+    image: tutum/hello-world
+    ports:
+    - containerPort: 80

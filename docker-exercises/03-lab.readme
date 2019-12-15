@@ -1,0 +1,16 @@
+EX 03-01 Node JS App
+
+Create simple nodejs app to print caller address and node hostname
+Create Dockerfile by tagging the image to match your docker ID
+Run the container & verify that app is working
+Push the image to your docker hub repo having image name and tag properly
+Build this nodejs app using containerized CI - Jenkins (r1co/jenkins-docker, Use jenkins file)
+Verify CI deploys docker images to you docker hub repo
+Modify nodejs app treating the change as version 2 changes
+Verify that CI picks up the change creates next version of docker image and deploys to docker hub
+Tag the code as v3.0 and push the tag to github and observe the docker hub repo for the image corresponding to this tag
+
+EX 03-02 SSH Server
+
+Create Dockerfile to build ssh server image based on Ubuntu
+

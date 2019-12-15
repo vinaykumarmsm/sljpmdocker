@@ -1,0 +1,8 @@
+sudo yum update
+    2  sudo yum install docker.io
+    3  sudo ufw status
+    4  sudo yum install -y docker
+    5  docker ps
+    6  sudo usermod -aG docker ec2-user
+    7  sudo service docker start
+

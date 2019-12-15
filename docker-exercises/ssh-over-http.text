@@ -1,0 +1,55 @@
+
+# SSSH over HTTP
+Login into EC2 using ssh terminal
+Verify
+Create user for web based ssh login
+Access using Browser
+References
+
+
+SSH over HTTP
+Login into EC2 using ssh terminal
+sudo apt-get install openssl shellinabox
+
+sudo vi /etc/default/shellinabox 
+
+Add below if file if empty
+
+ # Should shellinaboxd start automatically
+SHELLINABOX_DAEMON_START=1
+
+# TCP port that shellinboxd's webserver listens on
+SHELLINABOX_PORT=443
+
+# Parameters that are managed by the system and usually should not need
+# changing:
+# SHELLINABOX_DATADIR=/var/lib/shellinabox
+# SHELLINABOX_USER=shellinabox
+# SHELLINABOX_GROUP=shellinabox
+
+# Any optional arguments (e.g. extra service definitions).  Make sure
+# that that argument is quoted.
+#
+#   Beeps are disabled because of reports of the VLC plugin crashing
+#   Firefox on Linux/x86_64.
+SHELLINABOX_ARGS="--no-beep"
+
+# specify the IP address of a destination SSH server
+#SHELLINABOX_ARGS="--o-beep -s /:SSH:localhost"
+
+
+sudo service shellinabox restart
+Verify
+sudo netstat -nap | grep shellinabox 
+
+Create user for web based ssh login
+sudo useradd -G ubuntu oracle
+sudo passwd oracle    // set the password docker
+sudo usermod -aG docker oracle
+
+Access using Browser
+https://<IP> 
+
+References
+http://xmodulo.com/access-ssh-terminal-web-browser-linux.html
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<property name="LOG_PATH" value="/logs/spa-boot-docker" />
+	<property name="LOG_ARCHIVE" value="${LOG_PATH}/archive" />
+	<timestamp key="timestamp-by-second" datePattern="yyyyMMdd'T'HHmmss" />
+
+	<appender name="Console-Appender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern> %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread])
+				%highlight(%-5level) %logger{36}.%M - %msg%n		      </pattern>
+		</encoder>
+	</appender>
+	<appender name="RollingFile-Appender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/server-rolling.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_ARCHIVE}/server-rolling%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>3</maxHistory>
+			<totalSizeCap>10MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern> %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}
+				- %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="Async-Appender" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="RollingFile-Appender" />
+	</appender>
+	<appender name="STASH"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/logstash/server-rolling.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/logstash/server-rolling.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>7</maxHistory>
+		</rollingPolicy>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+	</appender>
+
+
+	<logger name="in.rajeshg" level="debug" additivity="false">
+		<appender-ref ref="Console-Appender" />
+		<appender-ref ref="STASH" />
+	</logger>
+	<logger name="in.rajeshg" level="info" />
+	<logger name="javax.net" level="info" />
+	<logger name="javax.management" level="info" />
+	<logger name="org.springframework" level="info" />
+	<root level="info">
+		<appender-ref ref="Console-Appender" />
+		<appender-ref ref="Async-Appender" />
+		<appender-ref ref="STASH" />
+	</root>
+</configuration>

@@ -1,0 +1,18 @@
+# Setup cluster: one manager and 1 worker  (docker node: vm1 and vm2)
+# Test: hitting any of the swarm node will work since request will be routed to the container where container is working
+docker service create --name www --replicas 1 -p 80:80 --constraint 'node.role==manager'  tutum/hello-world
+
+docker service update --constraint-add 'node.role==worker' www
+
+#Run above on two ec2 nodes
+#Test
+docker service create --replicas 1 --constraint 'node.role==manager' -p 80:80  --name www tutum/hello-world
+
+
+#Firewall port 
+TCP port 2376 for secure Docker client communication. This port is required for Docker Machine to work. Docker Machine is used to orchestrate Docker hosts.
+TCP port 2377. This port is used for communication between the nodes of a Docker Swarm or cluster. It only needs to be opened on manager nodes.
+TCP and UDP port 7946 for communication among nodes (container network discovery).
+UDP port 4789 for overlay network traffic (container ingress networking).
+
+

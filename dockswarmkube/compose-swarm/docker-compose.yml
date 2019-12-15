@@ -1,0 +1,22 @@
+version: "3"
+services:
+  sshd:
+    image: sickp/alpine-sshd
+    deploy:
+      replicas: 1
+  web:
+    image: nginx
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 100M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4000:80"
+    networks:
+      - webnet
+networks:
+  webnet:

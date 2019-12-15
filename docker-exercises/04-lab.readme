@@ -1,0 +1,14 @@
+EX 04-01 WAR App Image build
+
+Build dockerfile to run tomcat container
+Build simple web app and create WAR artifact
+Update Dockerfile to include WAR
+Build image for the web war app
+Run container and verify its output
+Use Dockerized CI Jenkins to build image and deploy it on docker hub 
+
+EX 04-02 Optimize Image
+
+Write optimized  Dockerfile to reduce image size to run node app
+Ref: https://hub.docker.com/r/training/webapp/~/dockerfile/  (138MB  to less than half size)
+

@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - 80:80
+    networks:
+      - db_network
+    environment:
+      WORDPRESS_DB_HOST: wordpress_db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: db_parola
+
+  wordpress_db:
+    image: mariadb
+    volumes:
+      - $PWD/mysql_data:/var/lib/mysql
+    networks:
+      - db_network
+    environment:
+      MYSQL_ROOT_PASSWORD: db_root_parola
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: db_parola
+
+networks:
+  db_network:
+    driver: overlay

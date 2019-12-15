@@ -1,0 +1,7 @@
+Create a docker container (busybox)
+Inspect the network connected
+Create custom network of type bridge
+Without stopping container, change the network to custom network bridge
+Create two custom networks (isolated_nw and isolated_nw2) of type bridge
+Create two containers (busybox) - one having network_nw and another having isolated_nw2 and verify if they can communicate among themselves
+

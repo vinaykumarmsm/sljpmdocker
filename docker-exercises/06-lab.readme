@@ -1,0 +1,8 @@
+docker swarm init  (aws ec2)
+docker swarm join ….  (current laptop)
+docker network create -d overlay laboverlay  (ec2)
+docker service create --name test --network laboverlay --replicas 2 ubuntu sleep infinity  (inspect network on ec2)
+docker exec -it 396c8b142a85 bash  
+(ec2 and install iputils-ping - apt-get update && apt-get install iputils-ping and ping / traceroute vm2)
+ apt-get install openssh-server  net-tools  && service restart ssh
+
