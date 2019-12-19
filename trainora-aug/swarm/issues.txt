@@ -1,0 +1,2 @@
+https://github.com/moby/moby/issues/35249
+Swarm mesh routing issues when using different subnets by participating vms / nodes example master in ec2 and node from local laptop
